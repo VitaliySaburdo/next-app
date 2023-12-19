@@ -36,13 +36,17 @@ img {
 }
 
 main {
-min-height: calc(100vh - 85px - 22px);
-padding-top: 1.5rem;
-padding-bottom: 1.5rem;
+  min-height: calc(100vh - 85px - 22px);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .title {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.active {
+  color: black;
 }
