@@ -1,5 +1,16 @@
-"use client";
 import { Metadata } from "next";
+
+async function fetchData(id: string) {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
+  return response.json();
+}
 
 type Props = {
   params: {
@@ -15,6 +26,12 @@ export async function generateMetadata({
   };
 }
 
-export default function Post({ params: { id } }: Props) {
-  return <h2>Post page {id}</h2>;
+export default async function Post({ params: { id } }: Props) {
+  const post = await fetchData(id);
+  return (
+    <>
+      <h2>{post.title}</h2>
+      <p>{post.body}</p>
+    </>
+  );
 }
