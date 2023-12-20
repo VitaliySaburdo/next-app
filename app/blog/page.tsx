@@ -1,4 +1,5 @@
 "use client";
+import { PostSearch } from "@/components/PostSearch";
 import { Posts } from "@/components/Posts";
 import { getPosts } from "@/services/getPosts";
 import Link from "next/link";
@@ -18,6 +19,7 @@ export default function Blog() {
   return (
     <>
       <h1 className="title">Blog</h1>
+      <PostSearch onSearch={setPosts}/>
       {isLoading ? (
         <h3 className="title">Loading...</h3>
       ) : (
