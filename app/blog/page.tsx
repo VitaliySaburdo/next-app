@@ -1,26 +1,25 @@
 "use client";
 import { PostSearch } from "@/components/PostSearch";
 import { Posts } from "@/components/Posts";
-import { getPosts } from "@/services/getPosts";
-import Link from "next/link";
+import { usePosts } from "@/store";
 import { useEffect, useState } from "react";
+import { shallow } from "zustand/shallow";
 
 export default function Blog() {
-  const [posts, setPosts] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [posts, loading, getPosts] = usePosts(
+    (state) => [state.posts, state.loading, state.getPosts],
+    shallow
+  );
 
   useEffect(() => {
-    setIsLoading(true);
-    getPosts()
-      .then(setPosts)
-      .finally(() => setIsLoading(false));
-  }, []);
+    getPosts();
+  }, [getPosts]);
 
   return (
     <>
       <h1 className="title">Blog</h1>
-      <PostSearch onSearch={setPosts}/>
-      {isLoading ? (
+      <PostSearch />
+      {loading ? (
         <h3 className="title">Loading...</h3>
       ) : (
         <Posts posts={posts} />

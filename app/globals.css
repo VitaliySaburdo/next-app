@@ -52,6 +52,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .active {
@@ -71,4 +72,11 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
