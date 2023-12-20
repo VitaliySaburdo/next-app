@@ -1,4 +1,5 @@
 "use client";
+import { Posts } from "@/components/Posts";
 import { getPosts } from "@/services/getPosts";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -18,15 +19,9 @@ export default function Blog() {
     <>
       <h1 className="title">Blog</h1>
       {isLoading ? (
-        <h3>Loading...</h3>
+        <h3 className="title">Loading...</h3>
       ) : (
-        <ul>
-          {posts.map((post: any) => (
-            <li key={post.id}>
-              <Link href={`/blog/${post.id}`}>{post.title}</Link>
-            </li>
-          ))}
-        </ul>
+        <Posts posts={posts} />
       )}
     </>
   );
