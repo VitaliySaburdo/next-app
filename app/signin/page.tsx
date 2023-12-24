@@ -4,9 +4,9 @@ import { SignInForm } from "@/components/SignInForm";
 export default async function Signin() {
   return (
     <div className="stack">
-      <h1>SignIn</h1>
+      <h1 className="title">SignIn</h1>
       <GoogleButton />
-      <div>or</div>
+      <div className="title">or</div>
       <SignInForm />
     </div>
   );
